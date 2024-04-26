@@ -34,8 +34,9 @@ func handleProxy(w http.ResponseWriter, r *http.Request, path string) {
 
 func StartServer() {
 	for k := range ProxyList {
+		path := k
 		http.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
-			handleProxy(w, r, k)
+			handleProxy(w, r, path)
 		})
 	}
 
